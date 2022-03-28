@@ -27,36 +27,19 @@
           <p>{{ berry.growth_time }}</p>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col cols="12">
-          <v-data-table
-            :headers="headers"
-            :items="berry.flavors"
-          />
-        </v-col>
-      </v-row>
+      <FlavorsTable :flavors="berry.flavors" />
     </div>
   </v-container>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import FlavorsTable from '@/components/FlavorsTable.vue'
 
 export default {
   name: 'BerryDetailPage',
-  data () {
-    return {
-      headers: [
-        {
-          text: 'Nombre',
-          value: 'name'
-        },
-        {
-          text: 'Potencia',
-          value: 'potency'
-        }
-      ]
-    }
+  components: {
+    FlavorsTable
   },
   computed: {
     ...mapState('pokemon', {
